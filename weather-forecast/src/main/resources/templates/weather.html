@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Weather Forecast</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="mt-5">Weather in <span th:text="${weather.city}"></span></h1>
+        <div class="card mt-4">
+            <div class="card-body">
+                <h5 class="card-title">Description</h5>
+                <p class="card-text" th:text="${weather.description}"></p>
+                <h5 class="card-title">Temperature</h5>
+                <p class="card-text">
+                    <span id="temperature" th:text="${weather.temperatureFahrenheit}">Fahrenheit</span><span
+                        id="unit">°F</span>
+                    <span id="temperature-celsius" style="display:none;"
+                        th:text="${weather.temperatureCelsius}">Celsius</span><span id="unit-celsius"
+                        style="display:none;">°C</span>
+                </p>
+                <button class="btn btn-primary" onclick="toggleTemperature()">Toggle to °C</button>
+            </div>
+        </div>
+        <a href="/" class="btn btn-secondary mt-4">Back</a>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function toggleTemperature() {
+            var fahrenheit = document.getElementById('temperature');
+            var unitF = document.getElementById('unit');
+            var celsius = document.getElementById('temperature-celsius');
+            var unitC = document.getElementById('unit-celsius');
+
+            if (fahrenheit.style.display !== 'none') {
+                fahrenheit.style.display = 'none';
+                unitF.style.display = 'none';
+                celsius.style.display = 'inline';
+                unitC.style.display = 'inline';
+                document.querySelector('button').innerText = 'Toggle to °F';
+            } else {
+                fahrenheit.style.display = 'inline';
+                unitF.style.display = 'inline';
+                celsius.style.display = 'none';
+                unitC.style.display = 'none';
+                document.querySelector('button').innerText = 'Toggle to °C';
+            }
+        }
+    </script>
+</body>
+
+</html>
