@@ -80,7 +80,7 @@ weather-forecast-app/
 ├── .gitignore
 ├── mvnw
 ├── mvnw.cmd
-├── pom.xml
+└── pom.xml
 ```
 
 ## Acknowledgements
